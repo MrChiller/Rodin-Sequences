@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>		
+	</head>
+	
+	<body>	
+
+		<!-- Start of first page I -->
+		<div data-role="page" id="page1">
+		<!-- Header -->
+		<div data-role="header" style="color:red" style="font-style: bold">
+			Marko Rodin's Sequences<br>
+			Programmed by Casey Rodgers
+			<script type="text/javascript" src="Rodin sequence2.js"></script>
+			<script type="text/javascript">
+				var counter = -1;
+			</script>
+		</div>
+		<!-- /header -->
+		<!-- Content    -->
+		<div data-role="content">
+			<div style="text-align:center">
+			The Rodin doubling sequence is a sequence of single digit numbers that repeats from
+			evaluating 2^n.<br>(where n= integers starting with zero).
+			I.E. 1,2,4,8,16,32,64,.....<br>
+			The digits are summed up to get a single digit. This sequence is:
+			1,2,4,8,7,5,1,2,4,8,7,5,.....<br>
+			This is what you should get in the sequence output area called "Rodin N^n sequence".<br>
+			When the number input is 2 which will be 2^n calculated.<br><br>
+
+			<img src="rodin symbol.jpg" alt="Rodin Symbol" width ="100%">
+			<img src="Rodin-sequence.jpg" alt="Rodin doubling sequence" width="100%">
+
+			<br><br>
+			This website will help people understand how Marko Rodin's doubling sequence of 
+			numbers works because it is an interactive javascript program. When you hit 
+			the Start sequence button you will see numbers displayed in all the text boxes and 
+			in the area bellow the line. In the first text box enter the N integer you wish to calculate
+			for the N^n rodin sequence to be displayed.The second textbox called "N^n sequence" displays 
+			each number in the sequence N^n.The third textbox called "Adding steps" 
+			displays the addition of the numbers until there is only one step. each step is seperated 
+			by commas. The fourth textbox called "Rodin N^n sequence" displays the Rodin sequence number
+			that is calculated in the third textbox.<br><br>
+			The doubling sequence and Rodin sequence are displayed bellow the text boxes. 
+			</div>		
+			<hr><div style="text-align:center">
+			Input N integer for the N^n sequence you wish to examine:<br>
+			<input type="text" id="inputNum" size=30 value="2"><br>
+			
+			N^n sequence:
+				<input type ="text" id="Doubling" size =30><br>
+			Adding steps:
+				<input type ="text" id="Evaluation" size =30><br>
+			Rodin sequence:	
+				<input type ="text" id="RodinTB" size =30><br>
+			<input type="button" value="Start sequences"
+			onclick="var TB1, TB2, TB3, sequence1;
+			counter++;
+			TB1 = doubling(inputNum, counter);
+			document.getElementById('Doubling').value = TB1;		
+			SpanDoubling(sequence1);
+			TB2 = Rodin();
+			document.getElementById('Evaluation').value = TB2;
+			TB3 = RodinAdd();
+			document.getElementById('RodinTB').value = TB3;
+			SpanRodin();
+			"><br>
+			<input type="button" value="Reset sequences"
+			onclick="
+			document.getElementById('Doubling').value = ''
+			document.getElementById('Evaluation').value = ''
+			document.getElementById('RodinTB').value = ''
+			document.getElementById('doublesequence').innerHTML = ''
+			document.getElementById('rodinsequence').innerHTML = ''
+			counter = -1
+			"><hr>
+			
+			N^n sequence:<span id="doublesequence"></span><br>
+			Rodin sequence:<span id="rodinsequence"></span>
+			<br><br><br><br>
+
+			It is interesting to note that javascript doubling math calculations only 
+			work up to 2^53 which is exactly 9007199254740992.<br> This means that the Rodin sequence 
+			is no longer accurate after repeating 9 times. 
+			
+			The other interesting fact to note is that if you do each N^n sequence you will find that they
+			repeat.<br> Here are the Rodin sequences which will repeat:<br>
+			1^n = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...<br>
+			2^n = 1, 2, 4, 8, 7, 5, 1, 2, 4, 8, 7, 5,...<br>
+			3^n = 1, 3, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,...<br>
+			4^n = 1, 4, 7, 1, 4, 7, 1, 4, 7, 1, 4, 7,...<br>
+			5^n = 1, 5, 7, 8, 4, 2, 1, 5, 7, 8, 4, 2,...<br>
+			6^n = 1, 6, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,...<br>
+			7^n = 1, 7, 4, 1, 7, 4, 1, 7, 4, 1, 7, 4,...<br>
+			8^n = 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,...<br>
+			9^n = 1, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9,...<br>
+			Then since 10^n starts with 10 which woulbe be 1+0 = 1, the sequences repeat. 
+			Thus the general rule is if you add the numbers together and keep adding the results till you
+			get a single digit number you will always end up with a Rodin sequence. e.g. 25^n is 2+5 = 7
+		    so the sequence is the same as 7^n.
+				</div>
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+			<div data-role="footer">
+				<h4>&copy; 2013 Casey Rodgers</h4>
+			</div>
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+
+	</body>
+</html>
